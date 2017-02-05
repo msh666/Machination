@@ -30,24 +30,24 @@ namespace Machination
         public MainWindow()
         {
             InitializeComponent();
-            var s1 = new Source(0, 0);
-            var d1 = new Drain(200, 200);
-            p1 = new Pool(100, 100);
-            g = new AdjacencyGraph<Figure, TaggedEdge<Figure, double>>();
+            //var s1 = new Source(0, 0);
+            //var d1 = new Drain(200, 200);
+            //p1 = new Pool(100, 100);
+            //g = new AdjacencyGraph<Figure, TaggedEdge<Figure, double>>();
 
-            addElement("s1", myGrid, s1);
-            addElement("d1", myGrid, d1);
-            addElement("p1", myGrid, p1);
-            addConnection(s1, p1, myGrid, 2);
-            addConnection(p1, d1, myGrid, 1);
+            //addElement("s1", myGrid, s1);
+            //addElement("d1", myGrid, d1);
+            //addElement("p1", myGrid, p1);
+            //addConnection(s1, p1, myGrid, 2);
+            //addConnection(p1, d1, myGrid, 1);
 
-            Run();
-            BestSolution();
+            //Run();
+            //BestSolution();
 
 
 
             //Evolutionary programming
-            //Evolutionary evo = new Evolutionary();
+            Evolutionary evo = new Evolutionary();
 
         }
 
