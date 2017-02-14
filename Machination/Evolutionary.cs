@@ -59,7 +59,8 @@ namespace Machination
             Run(initialGraph, p1);
             double scoreBest = RMSECalc();
             population.Add(initialGraph, scoreBest);
-            while (scoreBest >= 1.0)
+            var flag = 0;
+            while (scoreBest >= 0.2)
             {
                 childPopulation = new List<AdjacencyGraph<Figure, TaggedEdge<Figure, double>>>();
                 var parentList = new Dictionary<AdjacencyGraph<Figure, TaggedEdge<Figure, double>>, double>();
@@ -91,13 +92,19 @@ namespace Machination
                     childPopulation.Add(Mutate(parent.Key));
                 }
                 GetBestSolution(childPopulation);
-                scores = scores.OrderBy(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
-                if (scores.First().Value < scoreBest)
-                    scoreBest = scores.First().Value;
                 scores.ToList().ForEach(x => population.Add(x.Key, x.Value));
-                population.Take(50);
+                //population = population.OrderBy(x => x.Value).Take(1000).ToDictionary(x => x.Key, x => x.Value);
+                population = population.Take(1000).ToDictionary(x => x.Key, x => x.Value);
+                if (population.First().Value < scoreBest)
+                    scoreBest = population.First().Value;
+                //scores.ToList().ForEach(x => population.Add(x.Key, x.Value));
                 scores = new Dictionary<AdjacencyGraph<Figure, TaggedEdge<Figure, double>>, double>();
                 childPopulation = new List<AdjacencyGraph<Figure, TaggedEdge<Figure, double>>>();
+                flag++;
+                if (flag % 1000 == 0)
+                {
+                    
+                }
             }
         }
 
@@ -273,11 +280,21 @@ namespace Machination
         {
             var idealData = new XyDataSeries<double, double>();
 
-            for (int i = 0; i <= 10; i++)
-            {
-                idealData.Append(i, i);
-            }
-
+            //for (int i = 0; i <= 10; i++)
+            //{
+            //    idealData.Append(i, i);
+            //}
+            idealData.Append(0, 0);
+            idealData.Append(1, 0);
+            idealData.Append(2, 2);
+            idealData.Append(3, 2);
+            idealData.Append(4, 4);
+            idealData.Append(5, 4);
+            idealData.Append(6, 6);
+            idealData.Append(7, 6);
+            idealData.Append(8, 8);
+            idealData.Append(9, 8);
+            idealData.Append(10, 10);
             return idealData;
         }
         public static XyDataSeries<double, double> currentResult()

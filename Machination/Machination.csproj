@@ -37,6 +37,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Graphviz, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Graphviz.2.38.0.2\lib\Graphviz.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="GraphVizWrapper, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GraphViz.NET.1.0.0\lib\net40\GraphVizWrapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
@@ -144,6 +152,7 @@
     <Compile Include="Drain.cs" />
     <Compile Include="Evolutionary.cs" />
     <Compile Include="Figure.cs" />
+    <Compile Include="Gate.cs" />
     <Compile Include="Source.cs" />
     <Page Include="Chart.xaml">
       <SubType>Designer</SubType>
