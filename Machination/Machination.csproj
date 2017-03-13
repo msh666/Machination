@@ -69,45 +69,9 @@
       <HintPath>..\packages\QuickGraph.3.6.61119.7\lib\net4\QuickGraph.Serialization.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="SciChart.Charting, Version=4.1.1.8645, Culture=neutral, PublicKeyToken=b55dd9efe817e823, processorArchitecture=MSIL">
-      <HintPath>..\packages\SciChart.4.1.1.8645\lib\net46\SciChart.Charting.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="SciChart.Charting3D, Version=4.1.1.8645, Culture=neutral, PublicKeyToken=b55dd9efe817e823, processorArchitecture=MSIL">
-      <HintPath>..\packages\SciChart3D.4.1.1.8645\lib\net46\SciChart.Charting3D.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="SciChart.Core, Version=4.1.1.8645, Culture=neutral, PublicKeyToken=b55dd9efe817e823, processorArchitecture=MSIL">
-      <HintPath>..\packages\SciChart.4.1.1.8645\lib\net46\SciChart.Core.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="SciChart.Data, Version=4.1.1.8645, Culture=neutral, PublicKeyToken=b55dd9efe817e823, processorArchitecture=MSIL">
-      <HintPath>..\packages\SciChart.4.1.1.8645\lib\net46\SciChart.Data.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="SciChart.Drawing, Version=4.1.1.8645, Culture=neutral, PublicKeyToken=b55dd9efe817e823, processorArchitecture=MSIL">
-      <HintPath>..\packages\SciChart.4.1.1.8645\lib\net46\SciChart.Drawing.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="SciChart.Drawing.DirectX, Version=4.1.1.8645, Culture=neutral, PublicKeyToken=b55dd9efe817e823, processorArchitecture=MSIL">
-      <HintPath>..\packages\SciChart.DirectX.4.1.1.8645\lib\net46\SciChart.Drawing.DirectX.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="SharpDX, Version=2.6.3.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
-      <HintPath>$(SharpDXPackageBinDir)\SharpDX.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpDX.D3DCompiler, Version=2.6.3.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
-      <HintPath>$(SharpDXPackageBinDir)\SharpDX.D3DCompiler.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpDX.Direct3D10, Version=2.6.3.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
-      <HintPath>$(SharpDXPackageBinDir)\SharpDX.Direct3D10.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpDX.Direct3D9, Version=2.6.3.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
-      <HintPath>$(SharpDXPackageBinDir)\SharpDX.Direct3D9.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpDX.DXGI, Version=2.6.3.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
-      <HintPath>$(SharpDXPackageBinDir)\SharpDX.DXGI.dll</HintPath>
-    </Reference>
+    <Reference Include="SciChart.Charting, Version=4.1.1.8645, Culture=neutral, PublicKeyToken=b55dd9efe817e823, processorArchitecture=MSIL" />
+    <Reference Include="SciChart.Core, Version=4.1.1.8645, Culture=neutral, PublicKeyToken=b55dd9efe817e823, processorArchitecture=MSIL" />
+    <Reference Include="SciChart.Data, Version=4.1.1.8645, Culture=neutral, PublicKeyToken=b55dd9efe817e823, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -142,26 +106,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Arrow.cs" />
-    <Compile Include="Chart.xaml.cs">
-      <DependentUpon>Chart.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ChartDisplay.xaml.cs">
-      <DependentUpon>ChartDisplay.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Drain.cs" />
     <Compile Include="Evolutionary.cs" />
     <Compile Include="Figure.cs" />
+    <Compile Include="FileDotEngine.cs" />
     <Compile Include="Gate.cs" />
     <Compile Include="Source.cs" />
-    <Page Include="Chart.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ChartDisplay.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

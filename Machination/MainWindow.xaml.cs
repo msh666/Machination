@@ -23,10 +23,10 @@ namespace Machination
     /// </summary>
     public partial class MainWindow : Window
     {
-        private static List<double> graphList;
-        AdjacencyGraph<Figure, TaggedEdge<Figure, double>> g;
-        private Pool p1;
-        Random rnd = new Random();
+        private static List<double> _graphList;
+        AdjacencyGraph<Figure, TaggedEdge<Figure, double>> _g;
+        private Pool _p1;
+        Random _rnd = new Random();
         public MainWindow()
         {
             InitializeComponent();
@@ -57,38 +57,38 @@ namespace Machination
             List<List<double>> solutions = new List<List<double>>();
             for (var i = 0; i < 1000; i++)
             {
-                p1.Resource = 0;
+                _p1.Resource = 0;
                 Run();
-                solutions.Add(graphList);
-                rmseList.Add(RMSECalc());
+                solutions.Add(_graphList);
+                rmseList.Add(RmseCalc());
             }
             double solution = rmseList.Min();
             var a = rmseList.IndexOf(solution);
-            graphList = solutions[a];
+            _graphList = solutions[a];
         }
 
         private void Run()
         {
             var a = 0;
-            graphList = new List<double>();
+            _graphList = new List<double>();
             while (a < 10)
             {
-                foreach (var elem in g.Edges)
+                foreach (var elem in _g.Edges)
                 {
                     if (elem.Source.Type == "Source")
-                        elem.Target.incrementResource(rnd.Next(1, 5));
+                        elem.Target.IncrementResource(_rnd.Next(1, 5));
                     if (elem.Target.Type == "Drain")
-                        elem.Source.incrementResource(-rnd.Next(1, 5));
+                        elem.Source.IncrementResource(-_rnd.Next(1, 5));
                 }
                 a++;
-                graphList.Add(p1.Resource);
+                _graphList.Add(_p1.Resource);
             }
         }
 
-        public double RMSECalc()
+        public double RmseCalc()
         {
-            XyDataSeries<double, double> idealGraph = drawIdeal();
-            XyDataSeries<double, double> graph = draw();
+            XyDataSeries<double, double> idealGraph = DrawIdeal();
+            XyDataSeries<double, double> graph = Draw();
             double score = 0;
             for (var i = 1; i <= 10; i++)
             {
@@ -97,32 +97,32 @@ namespace Machination
             return score = Math.Sqrt(score/10);
         }
 
-        private void addElement(string name, Grid myGrid, Figure elem)
+        private void AddElement(string name, Grid myGrid, Figure elem)
         {
-            elem.add(name, myGrid);
-            g.AddVertex(elem);
+           // elem.add(name, myGrid);
+            _g.AddVertex(elem);
         }
 
-        private void addConnection(Figure from, Figure to, Grid myGrid, double weight)
+        private void AddConnection(Figure from, Figure to, Grid myGrid, double weight)
         {
-            var arrow = new Arrow();
-            arrow.addArrow(from, to, myGrid);
-            g.AddEdge(new TaggedEdge<Figure, double>(from, to, weight));
+            //var arrow = new Arrow();
+            //arrow.addArrow(from, to, myGrid);
+            _g.AddEdge(new TaggedEdge<Figure, double>(from, to, weight));
         }
 
-        public static XyDataSeries<double, double> draw()
+        public static XyDataSeries<double, double> Draw()
         {
             var dataSeries = new XyDataSeries<double, double>();
             dataSeries.Append(0, 0);
-            for (double i = 1; i <= graphList.Count(); i++)
+            for (double i = 1; i <= _graphList.Count(); i++)
             {
-                dataSeries.Append(i , graphList[(Convert.ToInt32(i) - 1)]);
+                dataSeries.Append(i , _graphList[(Convert.ToInt32(i) - 1)]);
             }
 
             return dataSeries;
         }
 
-        public XyDataSeries<double, double> drawIdeal()
+        public XyDataSeries<double, double> DrawIdeal()
         {
             var idealData = new XyDataSeries<double, double>();
 
@@ -137,9 +137,9 @@ namespace Machination
 
         private void ShowDiagram(object sender, RoutedEventArgs e)
         {
-            var cd = new ChartDisplay();
-            cd.Show();
-            double score = RMSECalc();
+            //var cd = new ChartDisplay();
+           // cd.Show();
+            double score = RmseCalc();
         }       
     }
 }

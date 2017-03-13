@@ -4,32 +4,39 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using QuickGraph;
+using QuickGraph.Graphviz.Dot;
 
 namespace Machination
 {
     class Figure
     {
 
-        public Figure(double X, double Y, string Type)
+        public Figure(string type)
         {
-            this.X = X;
-            this.Y = Y;
-            this.Type = Type;
+            this.Type = type;
+            Shape = GraphvizVertexShape.Circle;
         }
 
-        public double Resource { get; }
-        public double X { get; }
-        public double Y { get; }
+        public double Resource { get; set; }
         public string Type { get; }
+        public GraphvizVertexShape Shape { get; set; }
 
-        public virtual void incrementResource(double inc)
+        public virtual void IncrementResource(double inc)
         {
-
         }
 
-        public virtual void add(string name, Grid myGrid)
+        public virtual void AddToQueue(TaggedEdge<Figure, double> f)
         {
+        }
 
+        public virtual void InitializeQueue()
+        {
+        }
+
+        public virtual TaggedEdge<Figure, double> TakeElement()
+        {
+            return null;
         }
     }
 }

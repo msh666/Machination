@@ -7,38 +7,20 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
+using QuickGraph.Graphviz.Dot;
 
 namespace Machination
 {
     class Pool : Figure
     {
-        private Ellipse myEllipse;
-        private double left;
-        private double top;
-        private static string type = "Pool";
-        public double Resource { get; set; }
-        public Pool(double x, double y) : base(x + 20, y + 20, type)
+        private static string _type = "Pool";
+        //public double Resource { get; set; }
+        public Pool() : base( _type)
         {
-            left = x;
-            top = y;
             Resource = 0;
-            myEllipse = new Ellipse
-            {
-                HorizontalAlignment = HorizontalAlignment.Left,
-                VerticalAlignment = VerticalAlignment.Top,
-                Stroke = Brushes.Black,
-                Width = 40,
-                Height = 40
-            };
+            Shape = GraphvizVertexShape.Circle;
         }
-        public override void add(string name, Grid myGrid)
-        {
-            myEllipse.Name = name;
-            myEllipse.Margin = new Thickness(left, top, 0, 0);
-            myGrid.Children.Add(myEllipse);
-        }
-
-        public override void incrementResource(double inc)
+        public override void IncrementResource(double inc)
         {
             if (Resource + inc < 0)
                 Resource = 0;
